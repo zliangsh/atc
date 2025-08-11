@@ -1,0 +1,34 @@
+clear;clc;close all;
+I_bil = 1;
+E = 10;
+T = 0;
+while((T * (T + 1) /2) <= E)
+    T = T + 1;
+end
+k = 1;
+InterLeavingIput = zeros(1,E); 
+InterLeavingOutput = zeros(T,T); 
+for i = 1:length(InterLeavingIput)
+    InterLeavingIput(i) = i;
+end
+
+for i = 1:T+1
+    for j = 1 : T+1-i
+        if k < E+1
+            InterLeavingOutput(i,j) = InterLeavingIput(k);
+        else
+            InterLeavingOutput(i,j) = -99;
+        end
+        k = k + 1;
+    end
+end
+InterLeavingOuput = zeros(1,E); 
+            
+
+for k= l_PUSCH_start:Duration_PUSCH+l_PUSCH_start-1
+    if (ParaInfo.ptrs_l_map(1,k+1)==1)
+        ValidPuschDataLenPerOfdm(k+1) = PuschDataLenPerOfdm(k+1) - ptrs_num;
+    else
+        ValidPuschDataLenPerOfdm(k+1) = PuschDataLenPerOfdm(k+1);
+    end       
+end
